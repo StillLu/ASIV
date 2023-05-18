@@ -159,6 +159,7 @@ def main():
 
     torch.save(model.state_dict(), os.path.join(model_dir, 'bert_model.pth'))
 
+
     model.eval()
     test_loss, test_accuracy = 0, 0
 
