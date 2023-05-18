@@ -9,4 +9,4 @@ Implementation of ASIV described in our research work [Asymmetric feature intera
 
 ## Our pretrained LM (BERT + RoBERTa)
 [SST](https://drive.google.com/drive/folders/1HDIUoIqkxACfSPcKHvlgz_m1IiucZMyX?usp=share_link) / [Yelp2](https://drive.google.com/drive/folders/1nZ9WOX6m7EsZGTZFeFZmc67N0pofUE20?usp=share_link)
-_The pretrained LM could be improved_
+_(The pretrained LM could be improved and you could customize pretrain section)_
