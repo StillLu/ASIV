@@ -109,6 +109,16 @@ def main():
     dev = pd.read_csv(os.path.join(data_dir, "dev.tsv"), sep='\t', header=None, names=['similarity', 's1'])
     test = pd.read_csv(os.path.join(data_dir, "test.tsv"), sep='\t', header=None, names=['similarity', 's1'])
 
+    train['s1'] = train['s1'].str[:-1]
+    dev['s1'] = dev['s1'].str[:-1]
+    test['s1'] = test['s1'].str[:-1]
+
+    ### remove the instance that contains single word
+    train = train[train['s1'].str.split().str.len() > 1]
+    dev = dev[dev['s1'].str.split().str.len() > 1]
+    test = test[test['s1'].str.split().str.len() > 1]
+
+
     logger.info("  train size = %d", len(train))
     logger.info("  dev size = %d", len(dev))
     logger.info("  test size = %d", len(test))
