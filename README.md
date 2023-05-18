@@ -1,6 +1,9 @@
 # ASIV
 Implementation of ASIV described in our research work [Asymmetric feature interaction for interpreting model predictions](https://arxiv.org/abs/2305.07224)
 
+ 
+
+
 
 ## Examples
 * **Basic configuration:** pytorch == 1.12.1, python == 3.8.15, numpy == 1.24.0
@@ -8,6 +11,7 @@ Implementation of ASIV described in our research work [Asymmetric feature intera
   * Train NLP model: training_model.py
   * ASIV algorithm: asiv.py
   * Run ASIV to generate interaction explanation: compute_asiv.py
+* A hypergraph structure could be pre-defined and use ASIV to compute the weight of hyperedge.
 
 
 ## Our pretrained LM (BERT + RoBERTa)
