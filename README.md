@@ -3,7 +3,7 @@ Implementation of ASIV described in our research work [Asymmetric feature intera
 
 
 ## Examples
-* item1
+* **Basic configuration:** pytorch == 1.12.1, python == 3.8.15, numpy == 1.24.0
 * item2
 * item3
 
