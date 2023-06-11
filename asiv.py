@@ -59,7 +59,7 @@ def compute_pretrain_s(cls_token, sep_token, new_x_sorted, tokenizer, pad_s, pre
     all_npi = []
     for ii in range(len(new_input_ids)):
 
-        if pad_s not in new_input_ids[ii]:
+        if pad_t not in new_input_ids[ii]:
             new_text = new_text_all[ii]
             indexed_tokens = tokenizer.convert_tokens_to_ids(new_text)
 
