@@ -102,7 +102,7 @@ def compute_pretrain_s(cls_token, sep_token, new_x_sorted, tokenizer, pad_s, pre
 
                 new_seq = new_text
                 # new_att = [0] * len(new_seq)
-                new_att = [1 if x == 0 else 1 for x in new_input_ids[ii]]
+                #new_att = [1 if x == 0 else 1 for x in new_input_ids[ii]]
 
                 for k in ori_id:
                     new_seq[k] = results[ori_id.index(k)][i]
@@ -112,15 +112,15 @@ def compute_pretrain_s(cls_token, sep_token, new_x_sorted, tokenizer, pad_s, pre
 
                 indexed_tokens = indexed_tokens + [pad_t] * (maximum_length - len(indexed_tokens))
 
-                new_att = new_att + [pad_t] * (maximum_length - len(new_att))
+                #new_att = new_att + [pad_t] * (maximum_length - len(new_att))
 
                 tokens_tensor = torch.from_numpy(np.array(indexed_tokens))
                 # tokens_tensor = tokens_tensor.to(device, dtype=torch.long)
 
-                mask = torch.from_numpy(np.array(new_att))
+                #mask = torch.from_numpy(np.array(new_att))
                 # mask = mask.to(device, dtype=torch.long)
 
-                all_mask.append(mask)
+                all_mask.append(mask.cpu()[0])
                 all_input.append(tokens_tensor)
 
             all_npi.append(np_i_new for np_i_new in [all_npi_s[ii]] * pretrain_k)
