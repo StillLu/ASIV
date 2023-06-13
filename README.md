@@ -10,7 +10,7 @@ This work is the first step toward providing the explanation that incorporates a
  
  
 <p align="center">
- <img style="display: block; margin: auto;" src="Figures/11.png" width="500">
+ <img style="display: block; margin: auto;" src="Figures/11.png" width="500" title = 2>
 </p>
   <font size="3">  Fig.1 Explanations for a negative movie review
 (computed by Shapley value and Shapley interaction
