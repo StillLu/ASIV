@@ -26,7 +26,7 @@ model prediction.
  <img  src="Figures/22.png" width="500" >
 </p>
 <p align="center"; style = "font-size:15px">
-  Fig.2. Symmetric versus asymmetric pairwise interaction (computed by our method) where the directed edge $a\rightarrow b$ refers to in the presence of $a$ how much contribution of $b$ made to the model prediction.  The presence of ``very'' does not influence ``funny'' much while ``funny'' further modifies ``very'' and thus the interaction influence of $``\mathrm{funny}"\rightarrow ``\mathrm{very}" $ is stronger than that of $``\mathrm{very}"\rightarrow``\mathrm{funny}" $.
+  Fig.2. Symmetric versus asymmetric pairwise interaction (computed by our method) where the directed edge $a\rightarrow b$ refers to in the presence of $a$ how much contribution of $b$ made to the model prediction.  The presence of "very" does not influence "funny" much while "funny" further modifies "very" and thus the interaction influence of $``\mathrm{funny}"\rightarrow ``\mathrm{very}" $ is stronger than that of $``\mathrm{very}"\rightarrow``\mathrm{funny}" $.
 } 
 </p>
  
