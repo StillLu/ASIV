@@ -12,7 +12,7 @@ This work is the first step toward providing the explanation that incorporates a
 <p align="center">
  <img  src="Figures/11.png" width="500" >
 </p>
-<p align="center"; style = "font-size:15px">
+<p align="center"; style = "font-size:10px">
   Fig.1. Explanations for a negative movie review
 (computed by Shapley value and Shapley interaction
 index), where the color indicates contribution of the
@@ -25,7 +25,7 @@ model prediction.
 <p align="center">
  <img  src="Figures/22.png" width="500" >
 </p>
-<p align="center"; style = "font-size:15px">
+<p align="center"; style = "font-size:10px">
   Fig.2. Symmetric versus asymmetric pairwise interaction (computed by our method) where the directed edge $a\rightarrow b$ refers to in the presence of $a$ how much contribution of $b$ made to the model prediction.  The presence of "very" does not influence "funny" much while "funny" further modifies "very" and thus the interaction influence of "funny" $\rightarrow$ "very" is stronger than that of "very" $\rightarrow$ "funny".
 } 
 </p>
