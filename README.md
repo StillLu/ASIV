@@ -6,8 +6,25 @@ and “not" produces positive influence to model prediction. Therefore the influ
 
 This work is the first step toward providing the explanation that incorporates asymmetric feature interaction, and our research aims to abstract complex feature interactions in deep NLP models.
 
+ <! --
  ![Image text](Figures/11.png)
  ![Image text](Figures/22.png)
+ -->
+ 
+ 
+<p align="center">
+ <img style="display: block; margin: auto;" src="Figures/11.png" width="500">
+</p>
+<p align="center">
+ <span style="color:green;font-weight:700;font-size:20px">
+   Explanations for a negative movie review
+(computed by Shapley value and Shapley interaction
+index), where the color indicates contribution of the
+corresponding word/pairwise word interaction to the
+model prediction
+  </span>
+</p>
+ 
  
 
 
