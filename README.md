@@ -13,11 +13,12 @@ This work is the first step toward providing the explanation that incorporates a
  <img style="display: block; margin: auto;" src="Figures/11.png" width="500">
 </p>
 <p align="center">
-  Fig.1 Explanations for a negative movie review
+ 
+  <font size="5">  Fig.1 Explanations for a negative movie review
 (computed by Shapley value and Shapley interaction
 index), where the color indicates contribution of the
 corresponding word/pairwise word interaction to the
-model prediction
+model prediction. </font> 
 </p>
  
  
