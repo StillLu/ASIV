@@ -12,7 +12,7 @@ This work is the first step toward providing the explanation that incorporates a
 <p align="center">
  <img  src="Figures/11.png" width="500" >
 </p>
-<p align="center"; font-size:6pt>
+<p align="center"; style = "font-size:20px">
   Fig.1. Explanations for a negative movie review
 (computed by Shapley value and Shapley interaction
 index), where the color indicates contribution of the
@@ -20,6 +20,18 @@ corresponding word/pairwise word interaction to the
 model prediction.
 </p>
  
+ 
+ 
+<p align="center">
+ <img  src="Figures/22.png" width="500" >
+</p>
+<p align="center"; font-size:6pt>
+  Fig.1. Explanations for a negative movie review
+(computed by Shapley value and Shapley interaction
+index), where the color indicates contribution of the
+corresponding word/pairwise word interaction to the
+model prediction.
+</p>
  
 
 
