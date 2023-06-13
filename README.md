@@ -13,7 +13,7 @@ This work is the first step toward providing the explanation that incorporates a
  <img style="display: block; margin: auto;" src="Figures/11.png" width="500">
 </p>
 <p align="center">
- <span style="color:green;font-weight:700;font-size:10px">
+ <span style="font-size:10px">
   Fig.1 Explanations for a negative movie review
 (computed by Shapley value and Shapley interaction
 index), where the color indicates contribution of the
