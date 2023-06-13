@@ -6,10 +6,7 @@ and “not" produces positive influence to model prediction. Therefore the influ
 
 This work is the first step toward providing the explanation that incorporates asymmetric feature interaction, and our research aims to abstract complex feature interactions in deep NLP models.
 
- <! --
- ![Image text](Figures/11.png)
- ![Image text](Figures/22.png)
- -->
+ 
  
  
 <p align="center">
