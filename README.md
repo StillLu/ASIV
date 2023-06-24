@@ -39,12 +39,12 @@ model prediction.
 * **Src:**  
   * Train NLP model
     ```
-    training_model.py
+    python training_model.py
     ```
   * ASIV algorithm: asiv.py
   * Run ASIV to generate interaction explanation
     ```
-    compute_asiv.py
+    python compute_asiv.py
     ```
 * A hypergraph structure could be pre-defined and use ASIV to compute the weight of hyperedge.
 
