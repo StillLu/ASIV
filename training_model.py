@@ -43,7 +43,7 @@ def main():
 
     ## Required parameters
     parser.add_argument("--data_dir",
-                        default="Datasets/SST/data",
+                        default="../Datasets/SST/data",
                         type=str,
                         help="The input data dir.")
 

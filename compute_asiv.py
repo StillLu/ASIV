@@ -45,8 +45,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 
-data_dir = "Datasets/SST/data"
-output_dir = "results/cs"
+data_dir = "../Datasets/SST/data"
+output_dir = "testacc_sst"
 model_dir = "trained_bert_sst"
 
 ##### pretrain bert from SST2 dataset
