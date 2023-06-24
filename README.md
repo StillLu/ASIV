@@ -37,9 +37,15 @@ model prediction.
 #### _(We still work on improving the efficiency of ASIV and this repo is actively maintained.)_
 * **Basic configuration:** pytorch == 1.12.1, python == 3.8.15, numpy == 1.24.0
 * **Src:**  
-  * Train NLP model: training_model.py
+  * Train NLP model
+    ```
+    training_model.py
+    ```
   * ASIV algorithm: asiv.py
-  * Run ASIV to generate interaction explanation: compute_asiv.py
+  * Run ASIV to generate interaction explanation
+    ```
+    compute_asiv.py
+    ```
 * A hypergraph structure could be pre-defined and use ASIV to compute the weight of hyperedge.
 
 
