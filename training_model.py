@@ -84,7 +84,6 @@ def main():
 
     args = parser.parse_args()
 
-
     seed_everything(args.seed)
 
     if os.path.exists(args.trained_model_dir) and os.listdir(args.trained_model_dir):
@@ -118,7 +117,6 @@ def main():
     dev = dev[dev['s1'].str.split().str.len() > 1]
     test = test[test['s1'].str.split().str.len() > 1]
 
-
     logger.info("  train size = %d", len(train))
     logger.info("  dev size = %d", len(dev))
     logger.info("  test size = %d", len(test))
@@ -129,7 +127,7 @@ def main():
     train_data_loader = DataLoader(train_data, shuffle=True, batch_size=args.batch_size)
 
     test_data = DataPrecessForBert(tokenizer, test, max_seq_len=args.max_seq_length)
-    test_data_loader = DataLoader(test_data, shuffle=False, batch_size=rgs.batch_size)
+    test_data_loader = DataLoader(test_data, shuffle=False, batch_size=args.batch_size)
 
     model = BertForSequenceClassification.from_pretrained('bert-base-uncased', args.num_labels)
 
@@ -137,10 +135,10 @@ def main():
 
     optimizer = ret_optimizer(model)
     ## linear
-    scheduler = ret_scheduler(optimizer, int(len(train_data) / batch_size) * num_train_epochs)
+    scheduler = ret_scheduler(optimizer, int(len(train_data) / args.batch_size) * args.num_train_epochs)
 
     model.train()
-    for epoch in range(num_train_epochs):
+    for epoch in range(args.num_train_epochs):
         train_loss, train_accuracy = 0, 0
         for bi_index, (input_ids, attention_mask, token_type_ids, labels) in enumerate(train_data_loader):
             ids = input_ids.to(device, dtype=torch.long)
@@ -167,8 +165,7 @@ def main():
         logger.info("  avg train loss = %f", train_loss / len(train))
         logger.info("  avg train accuracy = %f", train_accuracy / len(train))
 
-    torch.save(model.state_dict(), os.path.join(model_dir, 'bert_model.pth'))
-
+    torch.save(model.state_dict(), os.path.join(args.model_dir, 'bert_model.pth'))
 
     model.eval()
     test_loss, test_accuracy = 0, 0
@@ -189,12 +186,8 @@ def main():
     logger.info("  avg test accuracy = %f", test_accuracy / len(test))
 
 
-
 if __name__ == "__main__":
     main()
-
-
-
 
 
 
