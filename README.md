@@ -46,7 +46,7 @@ model prediction.
     ```
     python compute_asiv.py
     ```
-    (please download the pretrained domain-specific model and specify the path)
+    (please download the pretrained domain-specific language model and specify the path)
 * A hypergraph structure could be pre-defined and use ASIV to compute the weight of hyperedge.
 
 
