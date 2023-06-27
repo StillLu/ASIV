@@ -202,7 +202,6 @@ def main():
                     all_com = head + tail
                     all_com.sort()
                     
-
                     a1, a2 = compute_subset_shapley_con_full_1(cls_token, sep_token, all_com, head, tail, all_w,
                                                                input_ids_ay, mask, token_ids,
                                                                targets, end_id_ori, y_pred, model, pretrain_model,

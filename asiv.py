@@ -428,7 +428,6 @@ def compute_subset_shapley_con_full_1(cls_token, sep_token, all_com, head, tail,
 
     all_score_d = value_func_l(all_input_d, all_npi_d, all_mask_d, token_ids, targets, y_pred, model, device)
     all_condi_d = compute_score(slice_indexes, all_score_d)
-
     return all_condi_s / (sampling_instance), all_condi_d / (sampling_instance)
 
 

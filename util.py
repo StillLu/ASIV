@@ -35,7 +35,6 @@ def seed_everything(seed):
 ##### classifier
 
 
-
 class BertClassifier(nn.Module):
     def __init__(self, bert_model, num_labels, dropout_rate):
         super(BertClassifier, self).__init__()
