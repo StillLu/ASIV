@@ -75,7 +75,6 @@ def main():
                         default=2,
                         type=int,
                         help="the size of label set")
-
     parser.add_argument('--seed',
                         type=int,
                         default=42,

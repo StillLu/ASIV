@@ -430,7 +430,6 @@ def compute_subset_shapley_con_full_1(cls_token, sep_token, all_com, head, tail,
     all_condi_d = compute_score(slice_indexes, all_score_d)
     return all_condi_s / (sampling_instance), all_condi_d / (sampling_instance)
 
-
 ###### conditional sampling + in-domain sampling
 
 def compute_subset_shapley_con_full_2(cls_token, sep_token, all_com, head, tail, all_w, input_ids_ay, mask, token_ids,

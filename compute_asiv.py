@@ -206,7 +206,6 @@ def main():
                                                                input_ids_ay, mask, token_ids,
                                                                targets, end_id_ori, y_pred, model, pretrain_model,
                                                                tokenizer, pad_s, pad_t, mask_m,maximum_length,args.sampling_instance, device)
-
                     a3 = compute_subset_shapley_con_full_2(cls_token, sep_token, all_com, head, tail, all_w, input_ids_ay,
                                                            mask, token_ids,
                                                            targets, end_id_ori, y_pred, model, pretrain_model,
