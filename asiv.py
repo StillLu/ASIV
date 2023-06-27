@@ -21,14 +21,14 @@ from itertools import chain, combinations
 from itertools import islice
 
 
-sampling_instance = 1000 ### the number of permutations for computing value funtion
-pretrain_k = 1  ### in-domain sampling
-maximum_length = 50
+#sampling_instance = 1000 ### the number of permutations for computing value funtion
+#pretrain_k = 1  ### in-domain sampling
+#maximum_lengthmaximum_length = 50
 
 
 
 def compute_pretrain_s(cls_token, sep_token, new_x_sorted, tokenizer, pad_s, pretrain_model, model, device, targets,
-                       token_ids, y_pred,all_npi_s,mask,pad_t,mask_m):
+                       token_ids, y_pred,all_npi_s,mask,pad_t,mask_m,pretrain_k,maximum_length):
 
     new_input_ids = [[cls_token] + x_sorted + [sep_token] for x_sorted in new_x_sorted]
     text = [tokenizer.convert_ids_to_tokens(input_ids) for input_ids in new_input_ids]
@@ -149,7 +149,7 @@ def generate_full_s(input_ids_bs, end_id_ori, head, tail, n_features, O_n, x_, l
 
 
 def generate_sort_head(w_feature_set, head, tail, b_1, x_p, input_ids_ay, input_ids_bs, a1, new_l, O_n1, loc_fid_head,
-                       loc_fid_tail):
+                       loc_fid_tail,maximum_length):
 
     xx_p = [input_ids_ay[i] for i in tail]
     w_p = [input_ids_bs[i] for i in new_l]
@@ -180,7 +180,7 @@ def generate_sort_head(w_feature_set, head, tail, b_1, x_p, input_ids_ay, input_
     return x_sorted
 
 def generate_sort_head_p(w_feature_set, head, tail, b_1, x_p, input_ids_ay, input_ids_bs, a1, new_l, O_n1, loc_fid_head,
-                       loc_fid_tail):
+                       loc_fid_tail,maximum_length):
 
     #xx_p = [input_ids_ay[i] for i in head]
     w_p = [input_ids_bs[i] for i in new_l]
@@ -213,7 +213,7 @@ def generate_sort_head_p(w_feature_set, head, tail, b_1, x_p, input_ids_ay, inpu
 
 
 def generate_sort_tail(w_feature_set, head, tail, b_1, x_p, input_ids_ay, input_ids_bs, a1, new_l, O_n1, loc_fid_head,
-                       loc_fid_tail):
+                       loc_fid_tail,maixmum_length):
     xx_p = [input_ids_ay[i] for i in head]
     w_p = [input_ids_bs[i] for i in new_l]
     ww_p = [input_ids_bs[i] for i in head]
@@ -247,7 +247,7 @@ def generate_sort_tail(w_feature_set, head, tail, b_1, x_p, input_ids_ay, input_
 ####### random sampling: masking + replace the words from training corpus
 
 def compute_subset_shapley_con_full_1(cls_token, sep_token, all_com, head, tail, all_w, input_ids_ay, mask, token_ids,
-                                    targets, end_id_ori, y_pred, model, pretrain_model, tokenizer, pad_s,pad_t,mask_m, device):
+                                    targets, end_id_ori, y_pred, model, pretrain_model, tokenizer, pad_s,pad_t,mask_m, maximum_length,sampling_instance,device):
 
     all_head_com = list(chain.from_iterable(combinations(head, r) for r in range(len(head) + 1)))
     all_tail_com = list(chain.from_iterable(combinations(tail, r) for r in range(len(tail) + 1)))
@@ -341,11 +341,11 @@ def compute_subset_shapley_con_full_1(cls_token, sep_token, all_com, head, tail,
             x_p = [input_ids_ay[i] for i in a1]
 
             x_sorted_s = generate_sort_head(w_feature_set_s, head, tail, b_1_s, x_p, input_ids_ay, input_ids_bs, a1,
-                                            new_l, O_n1, loc_fid_head, loc_fid_tail)
+                                            new_l, O_n1, loc_fid_head, loc_fid_tail,maximum_length)
 
             x_sorted_d = generate_sort_head(w_feature_set_d, head, tail, b_1_d, x_p, input_ids_ay, np.zeros(maximum_length), a1,
                                             new_l,
-                                            O_n1, loc_fid_head, loc_fid_tail)
+                                            O_n1, loc_fid_head, loc_fid_tail,maximum_length)
 
             new_input_ids_s = [cls_token] + x_sorted_s + [sep_token] + [pad_t] * (maximum_length - end_id_ori - 1)
             input_ids_s_s = torch.from_numpy(np.array(new_input_ids_s))
@@ -382,11 +382,11 @@ def compute_subset_shapley_con_full_1(cls_token, sep_token, all_com, head, tail,
             x_p = [input_ids_ay[i] for i in a1]
 
             x_sorted_s = generate_sort_head_p(w_feature_set_s, head, tail, b_1_s, x_p, input_ids_ay, input_ids_bs, a1,
-                                            new_l, O_n1, loc_fid_head, loc_fid_tail)
+                                            new_l, O_n1, loc_fid_head, loc_fid_tail,maximum_length)
 
             x_sorted_d = generate_sort_head_p(w_feature_set_d, head, tail, b_1_d, x_p, input_ids_ay, np.zeros(maximum_length), a1,
                                             new_l,
-                                            O_n1, loc_fid_head, loc_fid_tail)
+                                            O_n1, loc_fid_head, loc_fid_tail,maximum_length)
 
             new_input_ids_s = [cls_token] + x_sorted_s + [sep_token] + [pad_t] * (maximum_length - end_id_ori - 1)
             input_ids_s_s = torch.from_numpy(np.array(new_input_ids_s))
@@ -408,13 +408,6 @@ def compute_subset_shapley_con_full_1(cls_token, sep_token, all_com, head, tail,
             all_tail_mask_d.append(mask_d)
 
             all_tail_x_sorted.append(x_sorted_d)
-
-    #all_head_input_p, all_head_mask_p, all_head_npi_p = compute_pretrain_s(cls_token, sep_token, all_head_x_sorted, tokenizer, pad_s, pretrain_model, model, device, targets,
-                       #token_ids, y_pred,all_head_npi_s,mask)
-
-    #all_tail_input_p, all_tail_mask_p, all_tail_npi_p = compute_pretrain_s(cls_token, sep_token, all_tail_x_sorted, tokenizer, pad_s, pretrain_model, model, device, targets,
-                       #token_ids, y_pred,all_tail_npi_s,mask)
-
 
 
 
@@ -443,7 +436,7 @@ def compute_subset_shapley_con_full_1(cls_token, sep_token, all_com, head, tail,
 ###### conditional sampling + in-domain sampling
 
 def compute_subset_shapley_con_full_2(cls_token, sep_token, all_com, head, tail, all_w, input_ids_ay, mask, token_ids,
-                                    targets, end_id_ori, y_pred, model, pretrain_model, tokenizer, pad_s, pad_t,mask_m,device):
+                                    targets, end_id_ori, y_pred, model, pretrain_model, tokenizer, pad_s, pad_t,mask_m,maximum_length,sampling_instance,pretrain_k,device):
 
     all_head_com = list(chain.from_iterable(combinations(head, r) for r in range(len(head) + 1)))
     all_tail_com = list(chain.from_iterable(combinations(tail, r) for r in range(len(tail) + 1)))
@@ -537,11 +530,11 @@ def compute_subset_shapley_con_full_2(cls_token, sep_token, all_com, head, tail,
             x_p = [input_ids_ay[i] for i in a1]
 
             x_sorted_s = generate_sort_head(w_feature_set_s, head, tail, b_1_s, x_p, input_ids_ay, input_ids_bs, a1,
-                                            new_l, O_n1, loc_fid_head, loc_fid_tail)
+                                            new_l, O_n1, loc_fid_head, loc_fid_tail,maximum_length)
 
             x_sorted_d = generate_sort_head(w_feature_set_d, head, tail, b_1_d, x_p, input_ids_ay, np.zeros(maximum_length), a1,
                                             new_l,
-                                            O_n1, loc_fid_head, loc_fid_tail)
+                                            O_n1, loc_fid_head, loc_fid_tail,maximum_length)
 
             new_input_ids_s = [cls_token] + x_sorted_s + [sep_token] + [pad_t] * (maximum_length - end_id_ori - 1)
             input_ids_s_s = torch.from_numpy(np.array(new_input_ids_s))
@@ -573,11 +566,11 @@ def compute_subset_shapley_con_full_2(cls_token, sep_token, all_com, head, tail,
             x_p = [input_ids_ay[i] for i in a1]
 
             x_sorted_s = generate_sort_head_p(w_feature_set_s, head, tail, b_1_s, x_p, input_ids_ay, input_ids_bs, a1,
-                                            new_l, O_n1, loc_fid_head, loc_fid_tail)
+                                            new_l, O_n1, loc_fid_head, loc_fid_tail,maximum_length)
 
             x_sorted_d = generate_sort_head_p(w_feature_set_d, head, tail, b_1_d, x_p, input_ids_ay, np.zeros(maximum_length), a1,
                                             new_l,
-                                            O_n1, loc_fid_head, loc_fid_tail)
+                                            O_n1, loc_fid_head, loc_fid_tail,maximum_length)
 
             new_input_ids_s = [cls_token] + x_sorted_s + [sep_token] + [pad_t] * (maximum_length - end_id_ori - 1)
             input_ids_s_s = torch.from_numpy(np.array(new_input_ids_s))
@@ -596,14 +589,10 @@ def compute_subset_shapley_con_full_2(cls_token, sep_token, all_com, head, tail,
             all_tail_x_sorted.append(x_sorted_d)
 
     all_head_input_p, all_head_mask_p, all_head_npi_p = compute_pretrain_s(cls_token, sep_token, all_head_x_sorted, tokenizer, pad_s, pretrain_model, model, device, targets,
-                       token_ids, y_pred,all_head_npi_s,mask,pad_t,mask_m)
+                       token_ids, y_pred,all_head_npi_s,mask,pad_t,mask_m,pretrain_k)
 
     all_tail_input_p, all_tail_mask_p, all_tail_npi_p = compute_pretrain_s(cls_token, sep_token, all_tail_x_sorted, tokenizer, pad_s, pretrain_model, model, device, targets,
-                       token_ids, y_pred,all_tail_npi_s,mask,pad_t,mask_m)
-
-
-
-
+                       token_ids, y_pred,all_tail_npi_s,mask,pad_t,mask_m,pretrain_k)
 
 
     slice_indexes = [sampling_instance * len(all_head_com), sampling_instance * len(all_tail_com)]
