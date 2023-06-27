@@ -34,14 +34,13 @@ model prediction.
 
 
 ## Examples 
-#### _(We still work on improving the efficiency of ASIV and this repo is actively maintained.)_
 * **Basic configuration:** pytorch == 1.12.1, python == 3.8.15, numpy == 1.24.0
-* **Src:**  
+* **Src:**  we present the example code of ASIV to interpret SST-2 sentiment analyisis over BERT architecture. It is flexible to custermize the data, architecture and computing details.
+  
   * Train NLP model
     ```
     python training_model.py
     ```
-    ()
   * ASIV algorithm: asiv.py
   * Run ASIV to generate interaction explanation
     ```
