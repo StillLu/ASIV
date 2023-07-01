@@ -100,9 +100,9 @@ def main():
         os.makedirs(args.output_dir)
 
 
-    train = pd.read_csv(os.path.join(data_dir, "train.tsv"), sep='\t', header=None, names=['similarity', 's1'])
-    dev = pd.read_csv(os.path.join(data_dir, "dev.tsv"), sep='\t', header=None, names=['similarity', 's1'])
-    test = pd.read_csv(os.path.join(data_dir, "test.tsv"), sep='\t', header=None, names=['similarity', 's1'])
+    train = pd.read_csv(os.path.join(arg.data_dir, "train.tsv"), sep='\t', header=None, names=['similarity', 's1'])
+    dev = pd.read_csv(os.path.join(args.data_dir, "dev.tsv"), sep='\t', header=None, names=['similarity', 's1'])
+    test = pd.read_csv(os.path.join(args.data_dir, "test.tsv"), sep='\t', header=None, names=['similarity', 's1'])
 
 
 
