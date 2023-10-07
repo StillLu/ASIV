@@ -76,6 +76,11 @@ def main():
                         default=1000,
                         help="sampling times to compute shapley value")
 
+    parser.add_argument('--num_labels',
+                        type=int,
+                        default=1000,
+                        help="sampling times to compute shapley value")
+
     parser.add_argument('--pretrain_k',
                         type=int,
                         default=1,
@@ -115,13 +120,13 @@ def main():
 
     tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
 
-    train_data = DataPrecessForBert(tokenizer, train, max_seq_len=tokenizer_max_len)
+    train_data = DataPrecessForBert(tokenizer, train, max_seq_len=args.maximum_length)
     train_data_loader = DataLoader(train_data, shuffle=True, batch_size=1)
 
-    test_data = DataPrecessForBert(tokenizer, test, max_seq_len=tokenizer_max_len)
+    test_data = DataPrecessForBert(tokenizer, test, max_seq_len=args.maximum_length)
     test_data_loader = DataLoader(test_data, shuffle=False, batch_size=1)
 
-    model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
+    model = BertForSequenceClassification.from_pretrained('bert-base-uncased', args.num_labels)
     model.to(device)
     model.load_state_dict(torch.load(os.path.join(args.trained_model_dir, 'bert_model.pth')))
     model.eval()
