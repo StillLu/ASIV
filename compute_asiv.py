@@ -78,7 +78,7 @@ def main():
 
     parser.add_argument('--num_labels',
                         type=int,
-                        default=1000,
+                        default=2,
                         help="sampling times to compute shapley value")
 
     parser.add_argument('--pretrain_k',
