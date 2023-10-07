@@ -1,5 +1,4 @@
 
-
 import argparse
 import csv
 
@@ -205,16 +204,16 @@ def main():
                     a1, a2 = compute_subset_shapley_con_full_1(cls_token, sep_token, all_com, head, tail, all_w,
                                                                input_ids_ay, mask, token_ids,
                                                                targets, end_id_ori, y_pred, model, pretrain_model,
-                                                               tokenizer, pad_s, pad_t, mask_m,maximum_length,args.sampling_instance, device)
+                                                               tokenizer, pad_s, pad_t, mask_m, args.maximum_length,args.sampling_instance, device)
                     a3 = compute_subset_shapley_con_full_2(cls_token, sep_token, all_com, head, tail, all_w, input_ids_ay,
                                                            mask, token_ids,
                                                            targets, end_id_ori, y_pred, model, pretrain_model,
-                                                           tokenizer, pad_s, pad_t, mask_m, maximum_length,args.sampling_instance, args.pretrain_k,device)
+                                                           tokenizer, pad_s, pad_t, mask_m, args.maximum_length,args.sampling_instance, args.pretrain_k,device)
 
                     a4 = compute_subset_shapley_con_full_2(cls_token, sep_token, all_com, head, tail, all_w, input_ids_ay,
                                                            mask, token_ids,
                                                            targets, end_id_ori, y_pred, model, pretrain_model_1,
-                                                           tokenizer, pad_s, pad_t, mask_m, maximum_length,args.sampling_instance, args.pretrain_k,device)
+                                                           tokenizer, pad_s, pad_t, mask_m, args.maximum_length,args.sampling_instance, args.pretrain_k,device)
 
                     A1[head[0] - 1][tail[0] - 1] = a1
                     A2[head[0] - 1][tail[0] - 1] = a2
