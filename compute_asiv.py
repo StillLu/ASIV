@@ -225,7 +225,7 @@ def main():
                     A3[head[0] - 1][tail[0] - 1] = a3
                     A4[head[0] - 1][tail[0] - 1] = a4
 
-
+]
 
         logger.info("index=%s", str(bi_index_t))
 
