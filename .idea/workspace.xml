@@ -46,7 +46,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -65,7 +65,7 @@
       <workItem from="1687572908998" duration="6737000" />
       <workItem from="1696574980037" duration="32000" />
       <workItem from="1696576653404" duration="103000" />
-      <workItem from="1696672243600" duration="730000" />
+      <workItem from="1696672243600" duration="924000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1684330614986</created>
@@ -270,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696672854187</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="fix input param">
+      <created>1696672998846</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1696672998846</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
