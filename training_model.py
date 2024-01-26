@@ -127,7 +127,7 @@ def main():
     test_data = DataPrecessForBert(tokenizer, test, max_seq_len=args.max_seq_length)
     test_data_loader = DataLoader(test_data, shuffle=False, batch_size=args.batch_size)
 
-    model = BertForSequenceClassification.from_pretrained('bert-base-uncased', args.num_labels)
+    model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels = args.num_labels)
 
     model.to(device)
 
@@ -163,7 +163,7 @@ def main():
         logger.info("  avg train loss = %f", train_loss / len(train))
         logger.info("  avg train accuracy = %f", train_accuracy / len(train))
 
-    torch.save(model.state_dict(), os.path.join(args.model_dir, 'bert_model.pth'))
+    torch.save(model.state_dict(), os.path.join(args.trained_model_dir, 'bert_model.pth'))
 
     model.eval()
     test_loss, test_accuracy = 0, 0
